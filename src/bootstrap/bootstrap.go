@@ -1,10 +1,18 @@
 package bootstrap
 
-import "fmt"
+import (
+	
+	"fmt"
 
-func Test(){ 
+)
 
-	fmt.Println("HELLO FROM BOOTSTRAP")	
+var Config = map[string]string {}
+
+// bootstrap is responsible for initializing application and setting up server elements etc
+func Bootstrap() {
+	
+	fmt.Println("BOOTSTRAP FUNCTION")
+
 }
 
 

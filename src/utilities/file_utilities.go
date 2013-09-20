@@ -15,4 +15,5 @@ func GenerateS3Key(filePath string) string  {
 
 	// now join those pieces with a . and return the string
 	return strings.Join(pieces, ".")
+
 }
