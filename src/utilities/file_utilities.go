@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// generate an s3Key
 func GenerateS3Key(filePath string) string  {
 
 	// slice the extension array and to grab just the last element, then grab the first index of that new piece
@@ -15,5 +16,4 @@ func GenerateS3Key(filePath string) string  {
 
 	// now join those pieces with a . and return the string
 	return strings.Join(pieces, ".")
-
 }

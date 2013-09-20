@@ -22,10 +22,13 @@ Application structure
 -	3.) Upload -- should upload the element to an s3 key as specified 
 -	4.) Utilities -- utilities for various pieces of application
 
-Setup Commands
+Testing Environments 
 -
 
--	`go get -u launchpad.net/gocheck`
+-	`gowatch -test ` (run inside of a directory to continually test application)
+-	need to create `, r` commands within local.vimrc to trigger file changes etc 
+-	Note: when running `go test bootstrap` there is no output. However, running `go test` from within the bootstrap package directory, it will diesplay output
+
 
 
 
