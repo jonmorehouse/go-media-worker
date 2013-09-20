@@ -7,12 +7,23 @@ Overview
 -	Media worker servers are generally managed via our python media-workers cluster etc
 -	More optimized tasks are built in go and go here. These should still connect to the same gearman servers, but we can scale these servers a bit easier as a seperate component
 
+Notes
+-
+
+-	To enable vim syntax for golang: `cp $GOROOT/misc/vim/go.vim ~/.vim/syntax`
+
+
+
 Application structure
 -
 
--	1.) Bootstrap -- should load up json config and parse environment properly... should be importable etc
--	2.) Worker -- should be able to register various tasks and call the correct shared modules with correct settings etc -- should be able to parse json request etc
--	3.) Tests -- should have unit tests, integration tests, stubs, factories etc
+-	1.) Bootstrap -- should load up the correct configuration for the application
+-	2.) Encoder -- should have various functions that can encode a video and export the results to the correct location etc
+-	3.) Upload -- should upload the element to an s3 key as specified 
+-	4.) Utilities -- utilities for various pieces of application
+
+
+
 
 
 
