@@ -1,3 +1,10 @@
+/*
+	Bootstrap package
+
+	1.) Responsible for booting up configuration
+	2.) Responsible for dumb callers. We don't want to call the bootstrap function more than once etc
+*/
+
 package bootstrap
 
 import (
@@ -7,8 +14,8 @@ import (
 	"path"
 	"os"
 	"io/ioutil"
-	"github.com/bitly/go-simplejson"
-	"reflect"
+	//"sync"
+	//"github.com/bitly/go-simplejson"
 )
 
 // initialize a global config string to be exported 
@@ -18,9 +25,17 @@ var Config = map[string]string {
 	"configFile": "config.json", 
 }
 
+// now lets initialize the correct json cnofiguration etc
+
+// we are going to initialize a struct to wrap the function we are calling to ensure that we don't call and boot the application twice
+// we want to export this etc
+//var Once sync.Once
+
 // bootstrap is responsible for initializing application and setting up server elements etc
 func Bootstrap() {
 	
+	fmt.Println("CALLING BOOTSTRAP")
+
 	// grab the gopath environment variable
 	goPath := os.Getenv("GOPATH")
 
@@ -49,13 +64,13 @@ func Bootstrap() {
 	}
 
 	// create a new json structure from the configuration
-	jsonData, err := simplejson.NewJson(rawJson)
+	//jsonData, err := simplejson.NewJson(rawJson)
 	
-	test := jsonData.Get("gearmanHosts").MustArray()
-		
-	fmt.Println(jsonData.Get("gearmanHosts"))
-	
-	fmt.Println(reflect.TypeOf(test))
+	// now that we have created our config, lets link it to a global variable in this element
+	// note that if this function is called multiple times, then we will have extra memory overhead ... we could have a basic run tim
+
+	fmt.Println(string(rawJson))
+
 }
 
 
