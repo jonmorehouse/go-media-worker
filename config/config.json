@@ -1,5 +1,0 @@
-{
-	"gearmanHosts": ["127.0.0.1:4730"],
-	"encodingTasks": ["media::encoding-low", "media::encoding-medium", "media::encoding-high", "media::audio"]
-
-}
