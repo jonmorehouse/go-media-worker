@@ -6,8 +6,8 @@ import (
 	. "launchpad.net/gocheck"
 	. "utilities"
 	"testing"
-	"fmt"
 	"reflect"
+	"strings"
 )
 
 // hook up gocheck to use the go test runner
@@ -17,13 +17,26 @@ func Test(t * testing.T) { TestingT(t) }
 type TestSuite struct {}
 var _ = Suite(&TestSuite{})
 
-var testInt int = 22
+// initialize some test strings that are used through the application
+var testData = map[string]string {
+
+	"sampleFilePath" : "test.MOV",
+}
+
+
+// set up test suite here 
+func (s *TestSuite) SetUpSuite(c *C) {
+	
+	testData["sampleFilePathExtension"] = strings.Split(testData["sampleFilePath"], ".")[1:][0] 	
+
+}
 
 // test that keys are generated properly
-func (s *TestSuite) TestGenerateS3Keys(c *C) {
+// http://golang.org/doc/articles/laws_of_reflection.html
+func (s *TestSuite) TestGenerateS3Key(c *C) {
 	
 	// generate a key to evaluate on
-	key := GenerateS3Key()
+	key := GenerateS3Key(testData["sampleFilePath"])
 	
 	// grab the key reflection value through its interface
 	keyType := reflect.TypeOf(key)
@@ -32,21 +45,31 @@ func (s *TestSuite) TestGenerateS3Keys(c *C) {
 	c.Assert(keyType.Kind(), Equals, reflect.String)
 }
 
-//// generate s3 key
-//func (s *S) TestGenerateS3KeysAreUnique(t *testing.T) {
+// now make sure that the correct filenames are reflected within the generated keys
+func (s * TestSuite) TestGenerateS3KeyPreservesExtension (c *C) {
 
-	//var key1, key2 string
+	// initialize our fixure key element
+	key := GenerateS3Key(testData["sampleFilePath"])
 
-	//// generate 
-	//key1 = GenerateS3Keys()
-	//key2 = GenerateS3Keys()
+	// generate the keyExtension
+	keyExtension := strings.Split(key, ".")[1:][0]
+
+	// now lets make sure that the extensions are correct
+	c.Assert(testData["sampleFilePathExtension"], Equals, keyExtension)
 	
-	//// now lets make sure the two unique keys were 
-	//t.Assert(key1, Not(Equals), key2)
+}
 
-		
-//}
+// make sure that generated keys are different
+func (s *TestSuite) TestGenerateS3KeysAreUnique(c *C) {
 
+	var key1, key2 string
 
+	// generate 
+	key1 = GenerateS3Key(testData["sampleFilePath"])
+	key2 = GenerateS3Key(testData["sampleFilePath"])
+	
+	// now lets make sure the two unique keys were 
+	c.Assert(key1, Not(Equals), key2)
+}
 
 
