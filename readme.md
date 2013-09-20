@@ -22,7 +22,10 @@ Application structure
 -	3.) Upload -- should upload the element to an s3 key as specified 
 -	4.) Utilities -- utilities for various pieces of application
 
+Setup Commands
+-
 
+-	`go get -u launchpad.net/gocheck`
 
 
 
