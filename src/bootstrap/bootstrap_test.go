@@ -7,7 +7,6 @@ import (
 	. "bootstrap"
 	"testing"
 	//"reflect"
-	"fmt"
 )
 
 // initialize test suite using gocheck
@@ -19,9 +18,10 @@ var _ = Suite(&TestSuite{})
 
 func (s *TestSuite) TestBootstrap(c *C) {
 
-	fmt.Println("TEST BOOTSTRAP FUNCTION HERE")
-	
 	Bootstrap()
+	Bootstrap()
+	Bootstrap()
+
 }
 
 

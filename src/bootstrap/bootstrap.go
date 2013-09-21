@@ -14,9 +14,12 @@ import (
 	"path"
 	"os"
 	"io/ioutil"
-	//"sync"
+	"sync" 
 	//"github.com/bitly/go-simplejson"
 )
+
+// manage global once element for controlling the runs of bootstrap function
+var once sync.Once
 
 // initialize a global config string to be exported 
 var Config = map[string]string {
@@ -26,15 +29,11 @@ var Config = map[string]string {
 }
 
 // now lets initialize the correct json cnofiguration etc
-
 // we are going to initialize a struct to wrap the function we are calling to ensure that we don't call and boot the application twice
 // we want to export this etc
 //var Once sync.Once
-
 // bootstrap is responsible for initializing application and setting up server elements etc
-func Bootstrap() {
-	
-	fmt.Println("CALLING BOOTSTRAP")
+func bootstrap () {
 
 	// grab the gopath environment variable
 	goPath := os.Getenv("GOPATH")
@@ -70,6 +69,13 @@ func Bootstrap() {
 	// note that if this function is called multiple times, then we will have extra memory overhead ... we could have a basic run tim
 
 	fmt.Println(string(rawJson))
+
+}
+
+
+func Bootstrap() {	
+	
+	once.Do(bootstrap)
 
 }
 
