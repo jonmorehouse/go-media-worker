@@ -4,29 +4,32 @@
 	1.) Responsible for booting up configuration
 	2.) Responsible for dumb callers. We don't want to call the bootstrap function more than once etc
 */
-
 package bootstrap
 
 import (
 	
-	"fmt"
 	"log"
 	"path"
 	"os"
 	"io/ioutil"
 	"sync" 
-	//"github.com/bitly/go-simplejson"
+	"github.com/bitly/go-simplejson"
 )
 
 // manage global once element for controlling the runs of bootstrap function
 var once sync.Once
 
 // initialize a global config string to be exported 
-var Config = map[string]string {
+// initialize internal configuraetion for this module
+var config = map[string]string {
 
 	"configDir": "config",
 	"configFile": "config.json", 
 }
+
+// initialize a config element for storing our json
+var Config *simplejson.Json
+
 
 // now lets initialize the correct json cnofiguration etc
 // we are going to initialize a struct to wrap the function we are calling to ensure that we don't call and boot the application twice
@@ -45,7 +48,7 @@ func bootstrap () {
 	}
 
 	// now lets make sure the config file exists etc
-	configPath := path.Join(goPath, Config["configDir"], Config["configFile"])
+	configPath := path.Join(goPath, config["configDir"], config["configFile"])
 
 	// now call a fatal error if config file doesn't exist
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
@@ -63,20 +66,28 @@ func bootstrap () {
 	}
 
 	// create a new json structure from the configuration
-	//jsonData, err := simplejson.NewJson(rawJson)
+	jsonData, err := simplejson.NewJson(rawJson)
 	
-	// now that we have created our config, lets link it to a global variable in this element
-	// note that if this function is called multiple times, then we will have extra memory overhead ... we could have a basic run tim
+	// create a simple error handler
+	if err != nil {
+		
+		log.Fatalf("Configuration invalid.")
+	}
 
-	fmt.Println(string(rawJson))
+	// now lets copy over some of the values from our configuration element
+	jsonData.Set("configPath", configPath)
+
+	// if all is well, go ahead and save a pointer to the jsonData element to the configuration element
+	Config = jsonData
 
 }
 
 
+// wrap our bootstrap and create an interface for outside callers to call 
+// ensure that we only call the function once
 func Bootstrap() {	
 	
 	once.Do(bootstrap)
-
 }
 
 

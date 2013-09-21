@@ -56,7 +56,6 @@ func (s * TestSuite) TestGenerateS3KeyPreservesExtension (c *C) {
 
 	// now lets make sure that the extensions are correct
 	c.Assert(testData["sampleFilePathExtension"], Equals, keyExtension)
-	
 }
 
 // make sure that generated keys are different
