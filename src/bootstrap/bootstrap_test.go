@@ -7,7 +7,6 @@ import (
 	"testing"
 	"bootstrap"
 	"reflect"
-	//"github.com/bitly/go-simplejson"
 )
 
 // initialize test suite using gocheck
