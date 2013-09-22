@@ -22,10 +22,14 @@ func (s *TestSuite) TestGearmanWorker(c *C) {
 func (s *TestSuite) TestGearmanClient(c *C) {
 
 	// initialize client
-	//client := CreateClient()
+	client := CreateClient()
 
 	// assert that we actually have created a non-nil pointer etc
-	//c.Assert(client, Not(Equals), nil)
+	c.Assert(client, Not(Equals), nil)
+
+	// lets assert that this is a valid client that has the elements that we need out of it etc	
+	c.Assert(client, Not(Equals), nil) 
+
 
 }
 

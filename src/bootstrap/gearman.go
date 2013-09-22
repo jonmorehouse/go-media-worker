@@ -3,7 +3,7 @@ package bootstrap
 import (
 
 	"github.com/mikespook/gearman-go/worker"	
-	//"github.com/mikespook/gearman-go/client"	
+	"github.com/mikespook/gearman-go/client"	
 	//"fmt"
 	"log"
 )
@@ -41,18 +41,29 @@ func CreateWorker() * worker.Worker {
 }
 
 // can create multiple clients for this particular application
-//func CreateClient() *client.Client {
-	
-	//// ensure that application is booted up and ready to go
-	//Bootstrap()
+func CreateClient() *client.Client {
 
-	//// initialize first host
-	//host = Config.Get("gearmanHosts").Array()[0]
+	// ensure that application is booted up and ready to go
+	Bootstrap()
 
-	//fmt.Println(host)
-	//// now initialize a client
-	//c := client.New("127.0.0.1:4730")
+	// initialize first host
+	hosts, _ := Config.Get("gearmanHosts").Array()
+
+	// lets make sure we can safely convert the host to a string 
+	if str, ok := hosts[0].(string); ok {
+
+		// now initialize a client
+		c, _ := client.New(str)
+		
+		// handler errors here in the future when we have a bit more robust error handler package built-in
+
+		// 
+		return c
+	}
+
+	// error handler etc for this functionality
+	return nil
 	
-//}
+}
 
 
