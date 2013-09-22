@@ -3,6 +3,7 @@ package bootstrap
 import (
 
 	"github.com/mikespook/gearman-go/worker"	
+	"fmt"
 )
 
 func Worker() {

@@ -1,14 +1,22 @@
 package bootstrap_test
 
+import (
+	
+	. "launchpad.net/gocheck"
+	. "bootstrap"
+	"bootstrap"
+	"reflect"
+)
+
 // make sure that we initialize the config and it is valid with a key we can guarantee the existence of
 func (s *TestSuite) TestBootstrapInitializesConfig(c *C) {
 
 	// make sure that the Config pointer is empty here
-	bootstrap.Bootstrap()
+	Bootstrap()
 	
 	// now lets assert that one of the various keys is not null
 	// in the future, manually parse the config file and then run from there
-	configPath, err := bootstrap.Config.Get("configPath").String()
+	configPath, err := Config.Get("configPath").String()
 
 	// make sure that no error gets returned
 	c.Assert(err, Equals, nil)

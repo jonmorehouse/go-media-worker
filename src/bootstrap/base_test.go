@@ -5,8 +5,7 @@ import (
 
 	. "launchpad.net/gocheck"
 	"testing"
-	"bootstrap"
-
+	. "bootstrap"
 )
 
 // initialize test suite using gocheck
@@ -20,6 +19,7 @@ var _ = Suite(&TestSuite{})
 func (s *TestSuite) SetUpSuite(c *C) {
 
 	// initialize the bootstrap configuration 
-	bootstrap.Bootstrap()		
+	//bootstrap.Bootstrap()		
+	Bootstrap()
 }
 
