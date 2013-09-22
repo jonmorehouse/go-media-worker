@@ -1,6 +1,9 @@
 /*
 	Bootstrap package
 
+	@note assumes that the project path is always the last path on the $GOPATH
+	@note will look in the project path to determine the actual config path
+
 	1.) Responsible for booting up configuration
 	2.) Responsible for dumb callers. We don't want to call the bootstrap function more than once etc
 */
@@ -13,6 +16,7 @@ import (
 	"os"
 	"io/ioutil"
 	"sync" 
+	"strings"
 	"github.com/bitly/go-simplejson"
 )
 
@@ -39,7 +43,7 @@ var Config *simplejson.Json
 func bootstrap () {
 
 	// grab the gopath environment variable
-	goPath := os.Getenv("GOPATH")
+	goPath := strings.Split(os.Getenv("GOPATH"), ":")[1:][0]
 
 	// make sure we have a go element
 	if goPath == "" {
