@@ -30,7 +30,6 @@ func (s *TestSuite) TestGearmanClient(c *C) {
 	// lets assert that this is a valid client that has the elements that we need out of it etc	
 	c.Assert(client, Not(Equals), nil) 
 
-
 }
 
 

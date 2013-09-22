@@ -1,2 +1,5 @@
 export GOPATH=$GOPATH:`pwd`
 export PATH=$PATH:$GOPATH/bin
+alias count='cloc --exclude-dir=bin,lib,pkg .'
+
+

@@ -41,6 +41,7 @@ func CreateWorker() * worker.Worker {
 }
 
 // can create multiple clients for this particular application
+// for now we need to let this be ... come back later on https://github.com/mikespook/gearman-go/blob/master/example/client/client.go
 func CreateClient() *client.Client {
 
 	// ensure that application is booted up and ready to go
@@ -63,7 +64,9 @@ func CreateClient() *client.Client {
 
 	// error handler etc for this functionality
 	return nil
-	
 }
+
+
+
 
 

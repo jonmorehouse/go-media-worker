@@ -18,9 +18,26 @@ Application structure
 -
 
 -	1.) Bootstrap -- should load up the correct configuration for the application
+	
+	-	config
+	-	error handlers -- both application wide and booting 
+	-	gearman handlers -- create client / workers etc ... boot workers as well?
+
 -	2.) Encoder -- should have various functions that can encode a video and export the results to the correct location etc
+	
+	-	initialize an encoder function that can take in a filePath and encode the file properly
+	
 -	3.) Upload -- should upload the element to an s3 key as specified 
+
+	-	upload an element to s3 given correct parameters and settings etc
+	-	should use multipart upload if relevant
+
 -	4.) Utilities -- utilities for various pieces of application
+
+	-	file naming utilities
+-	5.) App -- should control the various tasks and create a master task runner that will run on several cores in parallel 
+	
+	-	should read multiple parameters to determine how many cores and processes can efficiently be run 
 
 Testing Environments 
 -
