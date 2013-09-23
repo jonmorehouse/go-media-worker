@@ -4,12 +4,14 @@ package app_test
 import (
 
 	. "launchpad.net/gocheck"
-	. "app"
+	//. "app"
+	"fmt"
 )
 
 // test the goRoutine runner. This should be automatically started when we call the function etc
 func (s *TestSuite) TestWorkerGoRoutine(c *C) {
 	
-	Worker()	
+	fmt.Println("TEST")
+	//Worker()	
 
 }
