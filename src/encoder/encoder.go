@@ -6,7 +6,8 @@ import (
 	"fmt"
 )
 
-func EncodeVideo() {
+
+func EncodeVideo(EncodingJob) {
 	
 	fmt.Println("TEST")
 
