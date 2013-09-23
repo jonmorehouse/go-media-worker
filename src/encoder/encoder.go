@@ -1,12 +1,15 @@
-package main
+package encoder 
 
 import (
 
-	"gmf"
+	//"gmf"
+	"fmt"
 )
 
-func main() {
-
+func EncodeVideo() {
 	
+	fmt.Println("TEST")
+
 
 }
+

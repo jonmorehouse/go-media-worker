@@ -5,7 +5,6 @@ package app_test
 import (
 	. "launchpad.net/gocheck"
 	. "app"
-	"fmt"
 )
 
 func (s *TestSuite) TestClient(c *C) {
