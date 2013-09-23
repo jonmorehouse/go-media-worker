@@ -55,17 +55,12 @@ func CreateClient() *client.Client {
 		// now initialize a client
 		c, _ := client.New(str)
 		
-		// handler errors here in the future when we have a bit more robust error handler package built-in
-
-		// 
+		// return our client
 		return c
 	}
 
 	// error handler etc for this functionality
 	return nil
 }
-
-
-
 
 
