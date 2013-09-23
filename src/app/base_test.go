@@ -15,14 +15,12 @@ func Test(t *testing.T) { TestingT(t)}
 // now initialize testSuite to use gocheck properly
 type TestSuite struct {}
 var _ = Suite(&TestSuite{})
-var Tasks [1]Task
+
+// store a list of pointers to the various tasks that we want to set up in this application
+var Tasks [1]*Task
 
 // initialize a testTask to be used through this package
-func testTask () string {
-	
-	return "testTask"
-
-}
+func testTask () {}
 
 // initialize a testSetupFunction here
 func (s *TestSuite) SetUpSuite(c *C) {
@@ -30,8 +28,7 @@ func (s *TestSuite) SetUpSuite(c *C) {
 	// initialize the bootstrap configuration 
 	bootstrap.Bootstrap()
 	
-	Tasks[0] =  NewTask("test::sample", testTask)
+	Tasks[0] = NewTask("test::sample", testTask)
 }
-
 
 
