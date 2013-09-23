@@ -33,6 +33,3 @@ func (s *TestSuite) TestGearmanClient(c *C) {
 }
 
 
-
-
-

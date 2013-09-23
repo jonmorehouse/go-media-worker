@@ -4,7 +4,6 @@ import (
 
 	"github.com/mikespook/gearman-go/worker"	
 	"github.com/mikespook/gearman-go/client"	
-	//"fmt"
 	"log"
 )
 
