@@ -7,6 +7,7 @@ import (
 	"testing"
 	. "app"
 	"bootstrap"
+	"github.com/mikespook/gearman-go/worker"
 )
 
 // initialize test suite using gocheck
@@ -20,7 +21,13 @@ var _ = Suite(&TestSuite{})
 var Tasks [1]*Task
 
 // initialize a testTask to be used through this package
-func testTask () {}
+func testTask (job *worker.Job) ([]byte, error) {
+
+	// return a sample array for now
+	returnArray := []byte("test::sample::return")
+
+	return returnArray, nil
+}
 
 // initialize a testSetupFunction here
 func (s *TestSuite) SetUpSuite(c *C) {
@@ -28,7 +35,10 @@ func (s *TestSuite) SetUpSuite(c *C) {
 	// initialize the bootstrap configuration 
 	bootstrap.Bootstrap()
 	
+	// initialize Task for this application
 	Tasks[0] = NewTask("test::sample", testTask)
 }
+
+
 
 

@@ -8,6 +8,7 @@ import (
 
 func (s * TestSuite) TestNewTask(c *C) {
 	
+	// initialize task
 	task := NewTask("test::sample", testTask)
 
 	// ensure that we have stored the parameters properly
