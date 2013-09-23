@@ -11,8 +11,7 @@ Notes
 -
 
 -	To enable vim syntax for golang: `cp $GOROOT/misc/vim/go.vim ~/.vim/syntax`
-
-
+-	Sample Encoding Job With [GMF](https://code.google.com/p/gmf/source/browse/gmf/Demultiplexer.go)
 
 Application structure
 -
@@ -35,12 +34,15 @@ Application structure
 -	4.) Utilities -- utilities for various pieces of application
 
 	-	file naming utilities
+	-	buffer to json utility -- send a bitstream and return a decoded json struct
+
 -	5.) App -- should control the various tasks and create a master task runner that will run on several cores in parallel 
 	
 	-	should read multiple parameters to determine how many cores and processes can efficiently be run 
 
 Testing Environments 
 -
+
 
 -	`gowatch -test ` (run inside of a directory to continually test application)
 -	need to create `, r` commands within local.vimrc to trigger file changes etc 
