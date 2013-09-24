@@ -5,13 +5,12 @@ set wildignore+=src/code.google.com/*
 
 fu! Shell(command)
 	
-	let filePath = a:command . "/.restart" 
-	execute "! touch " . filePath
+	execute "! " . a:command
 
 endfunction 
 
-map <Leader>r :call Shell($PACKAGE)
-map <Leader>rr :call Shell($PACKAGE)
-
-
+"map <Leader>r :call Shell($PACKAGE)
+"map <Leader>rr :call Shell($PACKAGE)
+nunmap <Leader>r
+map <Leader>r :call Shell("go test")<CR>
 

@@ -1,19 +1,32 @@
 package encoder
 
-type Job {
+import (
+	
+	//"utilities"
+)
 
-	var FilePath, OutputPath, EncodingType string
+type Job struct {
 
-	// whether 
-	var Finished bool
+	// initalize 
+	InputPath string 
+	OutputPath string 
+	EncodingType string
+	Status string
 
-	var Channel chan byte[]
+	// initialize a channel for returning elements / statuses
+	Channel chan[]byte
 }
 
-//func (self *EncodingJob) New () *EncodingJob {
+// create a new job with the inputPath 
+func NewJob(inputPath string, encodingType string)  * Job {
+		
+	job := new(Job)
 
+	// initialize the various elements needed
+	job.InputPath = inputPath
+	job.EncodingType = encodingType
+	//job.OutputPath =
 
-
-
-//}
+	return job
+}
 
