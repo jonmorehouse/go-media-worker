@@ -12,5 +12,5 @@ endfunction
 "map <Leader>r :call Shell($PACKAGE)
 "map <Leader>rr :call Shell($PACKAGE)
 nunmap <Leader>r
-map <Leader>r :call Shell("go test")<CR>
+map <Leader>r :call Shell("printf \"\033c\" && go test")<CR>
 

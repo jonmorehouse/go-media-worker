@@ -79,6 +79,7 @@ func bootstrap () {
 	}
 
 	// now lets copy over some of the values from our configuration element
+	jsonData.Set("baseDir", goPath)
 	jsonData.Set("configPath", configPath)
 
 	// if all is well, go ahead and save a pointer to the jsonData element to the configuration element

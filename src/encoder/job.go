@@ -3,6 +3,7 @@ package encoder
 import (
 	
 	//"utilities"
+	"fmt"
 )
 
 type Job struct {
@@ -20,6 +21,7 @@ type Job struct {
 // create a new job with the inputPath 
 func NewJob(inputPath string, encodingType string)  * Job {
 		
+	// initialize job and store a pointer to it
 	job := new(Job)
 
 	// initialize the various elements needed
@@ -30,3 +32,9 @@ func NewJob(inputPath string, encodingType string)  * Job {
 	return job
 }
 
+func (self * Job) Reset() {
+	
+	fmt.Println("TEST RESET")
+
+
+}
