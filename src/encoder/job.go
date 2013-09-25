@@ -2,8 +2,9 @@ package encoder
 
 import (
 	
-	//"utilities"
-	"fmt"
+	"utilities"
+	"bootstrap"
+	//"fmt"
 )
 
 type Job struct {
@@ -27,14 +28,20 @@ func NewJob(inputPath string, encodingType string)  * Job {
 	// initialize the various elements needed
 	job.InputPath = inputPath
 	job.EncodingType = encodingType
-	//job.OutputPath =
+	job.OutputPath = utilities.GenerateOutputPath(inputPath, bootstrap.Config.Get("outputDir").MustString())
+	
+	// job.status = ["initialized", "processing", "error", "success"]
+	job.Status = "initialized"
+
+	// now initialize the channel element
+	job.Channel = make(chan[]byte)
 
 	return job
 }
 
 func (self * Job) Reset() {
 	
-	fmt.Println("TEST RESET")
+	//fmt.Println("TEST RESET")
 
 
 }

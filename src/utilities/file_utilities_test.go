@@ -21,6 +21,7 @@ var _ = Suite(&TestSuite{})
 var testData = map[string]string {
 
 	"sampleFilePath" : "test.MOV",
+	"sampleOutputPath" : "/tmp/",
 }
 
 
@@ -70,5 +71,27 @@ func (s *TestSuite) TestGenerateS3KeysAreUnique(c *C) {
 	// now lets make sure the two unique keys were 
 	c.Assert(key1, Not(Equals), key2)
 }
+
+// test the output file path
+func (s *TestSuite) TestGenerateOutputPath(c *C) {
+	
+	var key1 string
+
+	key1 = GenerateOutputPath(testData["sampleFilePath"], testData["sampleOutputPath"])
+
+	c.Assert(key1, Not(Equals), nil)
+}
+
+// now assert that all outputPaths are unique
+func (s *TestSuite) TestGeneratedOutputPathsAreUnique(c *C) {
+
+	var key1, key2 string
+
+	key1 = GenerateOutputPath(testData["sampleFilePath"], testData["sampleOutputPath"])
+	key2 = GenerateOutputPath(testData["sampleFilePath"], testData["sampleOutputPath"])
+	
+	c.Assert(key1, Not(Equals), key2)
+}
+
 
 
