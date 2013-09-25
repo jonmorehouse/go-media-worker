@@ -29,5 +29,4 @@ func GenerateOutputPath(inputPath string, outputPath string) string {
 	fileNamePieces := []string{uuid.New(), extension}
 
 	return path.Join(outputPath, strings.Join(fileNamePieces, "."))
-
 }

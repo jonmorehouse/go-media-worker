@@ -4,34 +4,39 @@ package encoder_test
 import (
 
 	. "launchpad.net/gocheck"
-	//"testing"
-	//"bootstrap"
-	//. "encoder"
+	. "encoder"
 )
 
 // now create a basic element etc
 func (s *TestSuite) TestNewJob(c *C) {
 	
-	//// create a new job etc with the correct parametrs
-	//job := NewJob(SampleClip, SampleJob.EncodingType)
+	// create a new job etc with the correct parametrs
+	job := NewJob(SampleClip, SampleJob.EncodingType)
 
-	//// now initialize our encoding type etc
-	//c.Assert(job.EncodingType, Equals, SampleJob.EncodingType)	
+	// now initialize our encoding type etc
+	c.Assert(job.EncodingType, Equals, SampleJob.EncodingType)	
 	
-	//// now lets make sure the input path is correct	
-	//c.Assert(job.InputPath, Equals, SampleJob.InputPath)
+	// now lets make sure the input path is correct	
+	c.Assert(job.InputPath, Equals, SampleJob.InputPath)
 
-	//// now lets ensure that the outputPath is not nil
-	//c.Assert(job.OutputPath, Not(Equals), nil)
+	// now lets ensure that the outputPath is not nil
+	c.Assert(job.OutputPath, Not(Equals), nil)
 
-	//// now lets ensure that the channel is properly iniitalized
-	//c.Assert(job.Channel, Not(Equals), nil) 
+	// now lets ensure that the channel is properly iniitalized
+	c.Assert(job.Channel, Not(Equals), nil) 
 }
 
 func (s *TestSuite) TestJobReset(c *C) {
 
 	// ensure that resetting a newJob will actually reset things
+	job := NewJob(SampleClip, SampleJob.EncodingType)
 
+	// set some parameters for testing
+	job.Finished = true
+	job.Status = "complete"
+
+	// now lets reset the job and test the parameters returned etc
+	job.Reset()
 
 }
 
