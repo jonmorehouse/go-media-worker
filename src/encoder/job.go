@@ -4,7 +4,6 @@ import (
 	
 	"utilities"
 	"bootstrap"
-	//"fmt"
 )
 
 // initailize a job struct for managing the paths and various pieces of the encoding task etc 
@@ -12,16 +11,20 @@ type Job struct {
 
 	// initalize 
 	InputPath string 
+
 	// cache the outputDir in case we need to reset / restart the directory
 	OutputDir string
+	
 	// initialize our full path to the output path
 	OutputPath string 
+
 	// initialize the encodingType
 	EncodingType string
 
-	//
+	// string code of the status
 	Status string
 
+	// boolean of whether or not the job has been run through our system yet 
 	Finished bool
 
 	// initialize a channel for returning elements / statuses

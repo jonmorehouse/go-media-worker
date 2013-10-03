@@ -1,5 +1,11 @@
 export GOPATH=$GOPATH:`pwd`
 export PATH=$PATH:$GOPATH/bin
 alias count='cloc --exclude-dir=bin,lib,pkg .'
+export FFMPEG_ROOT='/usr/local'
+export CGO_LDFLAGS="-L$FFMPEG_ROOT/lib/ -lavcodec -lavformat -lavutil -lswscale"
+export CGO_CFLAGS="-I$FFMPEG_ROOT/include"
+
+
+
 
 

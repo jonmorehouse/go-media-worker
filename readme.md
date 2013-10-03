@@ -48,6 +48,23 @@ Testing Environments
 -	need to create `, r` commands within local.vimrc to trigger file changes etc 
 -	Note: when running `go test bootstrap` there is no output. However, running `go test` from within the bootstrap package directory, it will diesplay output
 
+Google Go Media Framework
+-
+
+-	1.) Initialize media framework using ffmpeg 0.8 from [source](http://www.ffmpeg.org/releases/ffmpeg-0.8.1.tar.bz2)
+-	2.) Build framework and link up proper environment variables etc 
+-	3.) Export $FFMPEG into path
+-	4.) Review this [patch](https://github.com/3d0c/gmf/tree/master/gmf)
+
+
+
+
+
+
+
+
+
+
 
 
 
