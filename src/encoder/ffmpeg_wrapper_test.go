@@ -25,7 +25,7 @@ func (s *TestSuite) TestRunCommand(c *C) {
 	waitGroup.Add(1)
 
 	// now lets get the result channel etc
-	signal, output := RunCommand([]string{"ls", "~/Documents"})
+	signal, output := RunCommand("ls", []string{"/Users/MorehouseJ09/Documents"}...)
 
 	// wait for the timeout
 	select {
@@ -61,18 +61,6 @@ func (s *TestSuite) TestRunCommand(c *C) {
 
 	// initialize element
 	waitGroup.Wait()
-
-}
-
-func (s *TestSuite) TestFunc(c *C) {
-	
-	test := func(arguments ...string) {
-
-		fmt.Println(arguments)
-	}
-
-	test([]string{"one", "two"}...)
-
 
 }
 
