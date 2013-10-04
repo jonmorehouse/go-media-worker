@@ -2,7 +2,7 @@ package encoder
 
 import (
 
-	//"fmt"
+	"fmt"
 	//"os/exec"
 	//"bytes"
 )
@@ -19,12 +19,14 @@ func RunCommand(arguments []string) (chan bool, chan string) {
 	// this is the go function that is going to run the subcommand and will handle the error checking etc
 	go func() {
 	
+		fmt.Println("arguments...")
+
+		//command := exec.Command(arguments...)
+		
 		// run the command and parse results. We need to notify the element of error etc		
 		// signalling false is not good!
 		signal <- false
 		
-	
-
 	}() 
 
 	// now return the various channels here etc

@@ -40,7 +40,6 @@ func (s *TestSuite) TestRunCommand(c *C) {
 			} else {
 
 				fmt.Println("BAD")
-
 			}
 
 			waitGroup.Done()
@@ -62,6 +61,17 @@ func (s *TestSuite) TestRunCommand(c *C) {
 
 	// initialize element
 	waitGroup.Wait()
+
+}
+
+func (s *TestSuite) TestFunc(c *C) {
+	
+	test := func(arguments ...string) {
+
+		fmt.Println(arguments)
+	}
+
+	test([]string{"one", "two"}...)
 
 
 }
