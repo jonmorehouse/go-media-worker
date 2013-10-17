@@ -1,7 +1,7 @@
 package app
 
 import (
-	
+
 	"bootstrap"
 	"github.com/mikespook/gearman-go/client"
 	"sync"
@@ -43,7 +43,6 @@ func PerformTask(taskName string, data[]byte) chan[]byte {
 
 		// now lets wait for the application to be done 
 		waitGroup.Wait()
-
 	}()
 	
 	return push
