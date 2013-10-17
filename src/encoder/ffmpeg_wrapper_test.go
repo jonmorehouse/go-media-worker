@@ -14,4 +14,8 @@ func (s *TestSuite) TestExtractAudio(c *C) {
 
 }
 
+func (s *TestSuite) TestAudioOnly(c *C) {
 
+	//ExtractAudio(SampleJob)	
+
+}
